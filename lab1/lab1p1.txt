@@ -1,0 +1,5 @@
+1.) 
+    a.) Using a guess method called Binary Search is the most efficient way of guessing the correct number. just take the range of numbers that the number could possible be in, divide by 2, and guess that number. 
+    For example, starting with a number between 1 and 1000 you would guess 500. If the number is lower you would then guess 250, and so on.
+
+    b.) Using Binary Search correctly it should take maximum 10 guesses to find the correct number between 1 and 1000.
