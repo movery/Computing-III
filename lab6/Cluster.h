@@ -16,7 +16,7 @@ class Cluster {
   Cluster(const Cluster& arg);
   Cluster& operator=(const Cluster&);
   void addPoint(Point);
-  int getSize() const;
+  int getSize () const;
   Point getCentroid() const;
   Point getPoint(int) const;
   void calculateCentroid();

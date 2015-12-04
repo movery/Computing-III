@@ -2,8 +2,8 @@
 #
 #
 
-lab6: main.cpp Cluster.cpp Point.cpp
-	g++ -std=c++0x main.cpp Cluster.cpp Point.cpp -o lab6
+lab6: main.cpp Point.cpp Cluster.cpp
+	g++ --std=c++0x main.cpp Point.cpp Cluster.cpp -o lab6
 
 clean:
-	rm -f lab6 *~
+	rm -f lab6

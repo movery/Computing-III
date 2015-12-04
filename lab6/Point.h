@@ -1,25 +1,20 @@
 #ifndef _POINT_H
 #define _POINT_H
 
-class Point { 
+#include <vector>
+
+using namespace std;
+
+class Point {
  private:
-  double W;
-  double X;
-  double Y;
-  double Z;
+  vector<double> LOC;
  public:
   Point();
-  Point(double, double, double, double);
+  Point(vector<double>);
   Point(const Point& arg);
   Point& operator=(const Point&);
-  void setW(double);
-  void setX(double);
-  void setY(double);
-  void setZ(double);
-  double getW() const;
-  double getX() const;
-  double getY() const;
-  double getZ() const;
+  void setLOC(vector<double>&);
+  vector<double> getLOC() const;
   void displayPoint();
 };
 

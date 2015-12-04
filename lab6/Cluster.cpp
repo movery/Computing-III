@@ -2,13 +2,13 @@
 #include "Cluster.h"
 #include "Point.h"
 
-Cluster::Cluster(Point _point) : centroid(_point.getW(), _point.getX(), _point.getY(), _point.getZ()) { 
+Cluster::Cluster(Point _point) : centroid(_point.getLOC()) {
   points.push_back(_point);
   size = points.size();
 }
 
 Cluster::Cluster(const Cluster& arg) {
-  for(int i = 0; i < arg.getSize(); i++) 
+  for(int i = 0; i < arg.getSize(); i++)
     points.push_back(arg.getPoint(i));
 
   size = arg.getSize();
@@ -23,7 +23,7 @@ Cluster& Cluster::operator=(const Cluster& arg) {
 
   for(int i = 0; i < arg.getSize(); i++)
     points.push_back(arg.getPoint(i));
-  
+
   size = arg.getSize();
   centroid = arg.getCentroid();
 
@@ -49,22 +49,14 @@ Point Cluster::getPoint(int index) const {
 }
 
 void Cluster::calculateCentroid() {
-  double _W = 0, _X = 0, _Y = 0, _Z = 0;
+  vector<double> _LOC = points[0].getLOC();
+
+  for(int i = 1; i < size; i++) 
+    for(int j = 0; j < _LOC.size(); j++) 
+      _LOC[j] += points[i].getLOC()[j];
   
-  for(int i = 0; i < size; i++) {
-    _W += points[i].getW();
-    _X += points[i].getX();
-    _Y += points[i].getY();
-    _Z += points[i].getZ();
-  }
+  for(int i = 0; i < _LOC.size(); i++)
+    _LOC[i] /= size;
 
-  _W /= size;
-  _X /= size;
-  _Y /= size;
-  _Z /= size;
-
-  centroid.setW(_W);
-  centroid.setX(_X);
-  centroid.setY(_Y);
-  centroid.setZ(_Z);
+  centroid.setLOC(_LOC);
 }
